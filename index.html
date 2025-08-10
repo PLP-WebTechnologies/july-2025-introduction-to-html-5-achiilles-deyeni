@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Profile of Achilles Deyeni - AI Engineer & Software Developer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <title>Achilles Deyeni | AI Engineer</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, sans-serif;
+        background: linear-gradient(
+          135deg,
+          #0f0f23 0%,
+          #1a1a2e 50%,
+          #16213e 100%
+        );
+        color: white;
+        min-height: 100vh;
+        overflow-x: hidden;
+        position: relative;
+      }
+
+      /* Animated background particles */
+      .bg-animation {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .particle {
+        position: absolute;
+        background: rgba(100, 255, 218, 0.1);
+        border-radius: 50%;
+        animation: float 20s infinite linear;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(100vh) rotate(0deg);
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        90% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-100px) rotate(360deg);
+          opacity: 0;
+        }
+      }
+
+      /* Glassmorphism container */
+      .container {
+        position: relative;
+        z-index: 10;
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 2rem;
+        backdrop-filter: blur(20px);
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 30px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
+          inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        margin-top: 5vh;
+        animation: slideUp 1s ease-out;
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Header */
+      header {
+        text-align: center;
+        margin-bottom: 3rem;
+        position: relative;
+      }
+
+      .header-title {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-weight: 800;
+        background: linear-gradient(135deg, #64ffda, #00bcd4, #03a9f4);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-shadow: 0 0 30px rgba(100, 255, 218, 0.3);
+        animation: glow 2s ease-in-out infinite alternate;
+        line-height: 1.1;
+      }
+
+      @keyframes glow {
+        from {
+          text-shadow: 0 0 20px rgba(100, 255, 218, 0.3);
+        }
+        to {
+          text-shadow: 0 0 40px rgba(100, 255, 218, 0.6);
+        }
+      }
+
+      .subtitle {
+        font-size: 1.2rem;
+        color: rgba(255, 255, 255, 0.7);
+        margin-top: 1rem;
+        font-weight: 300;
+      }
+
+      /* Profile section */
+      .profile-content {
+        display: grid;
+        gap: 2rem;
+        margin-bottom: 3rem;
+      }
+
+      .profile-card {
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 20px;
+        padding: 2rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .profile-card::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle,
+          rgba(100, 255, 218, 0.05) 0%,
+          transparent 70%
+        );
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .profile-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(100, 255, 218, 0.15);
+        border-color: rgba(100, 255, 218, 0.3);
+      }
+
+      .profile-card:hover::before {
+        opacity: 1;
+      }
+
+      .info-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        position: relative;
+        z-index: 2;
+      }
+
+      .info-item:last-child {
+        margin-bottom: 0;
+      }
+
+      .info-icon {
+        font-size: 1.5rem;
+        color: #64ffda;
+        margin-right: 1rem;
+        width: 40px;
+        display: flex;
+        justify-content: center;
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      .info-label {
+        font-weight: 600;
+        color: #64ffda;
+        min-width: 120px;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .info-value {
+        font-size: 1.1rem;
+        color: rgba(255, 255, 255, 0.9);
+        font-weight: 400;
+      }
+
+      /* Special message card */
+      .message-card {
+        background: linear-gradient(
+          135deg,
+          rgba(100, 255, 218, 0.1),
+          rgba(0, 188, 212, 0.1)
+        );
+        border: 2px solid rgba(100, 255, 218, 0.2);
+        text-align: center;
+        position: relative;
+      }
+
+      .message-card .info-value {
+        font-size: 1.3rem;
+        font-weight: 500;
+        color: #64ffda;
+        text-shadow: 0 0 10px rgba(100, 255, 218, 0.3);
+      }
+
+      /* Skills section */
+      .skills-card {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 107, 107, 0.1),
+          rgba(255, 206, 84, 0.1)
+        );
+        border: 2px solid rgba(255, 206, 84, 0.2);
+      }
+
+      .skills-card .info-value {
+        color: #ffce54;
+        font-weight: 500;
+      }
+
+      /* Footer */
+      footer {
+        text-align: center;
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 0.9rem;
+        margin-top: 2rem;
+        padding: 2rem 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      /* Responsive design */
+      @media (max-width: 768px) {
+        .container {
+          margin: 2rem 1rem;
+          padding: 1.5rem;
+        }
+
+        .info-item {
+          flex-direction: column;
+          align-items: flex-start;
+          text-align: left;
+        }
+
+        .info-icon {
+          margin-bottom: 0.5rem;
+          margin-right: 0;
+        }
+
+        .info-label {
+          margin-bottom: 0.3rem;
+          min-width: auto;
+        }
+      }
+
+      /* Hover effects */
+      .profile-card:hover .info-icon {
+        animation: bounce 0.6s ease;
+      }
+
+      @keyframes bounce {
+        0%,
+        20%,
+        60%,
+        100% {
+          transform: translateY(0);
+        }
+        40% {
+          transform: translateY(-10px);
+        }
+        80% {
+          transform: translateY(-5px);
+        }
+      }
+
+      /* Additional modern touches */
+      .gradient-text {
+        background: linear-gradient(135deg, #ff6b6b, #4ecdc4, #45b7d1);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Animated background -->
+    <div class="bg-animation" id="bgAnimation"></div>
+
+    <div class="container">
+      <header>
+        <h1 class="header-title">Achilles Deyeni</h1>
+        <p class="subtitle">AI Engineer & Software Developer</p>
+      </header>
+
+      <div class="profile-content">
+        <div class="profile-card">
+          <div class="info-item">
+            <i class="fas fa-graduation-cap info-icon"></i>
+            <span class="info-label">School</span>
+            <span class="info-value"
+              >University of Mines and Technology (UMaT)</span
+            >
+          </div>
+
+          <div class="info-item">
+            <i class="fas fa-code info-icon"></i>
+            <span class="info-label">Programme</span>
+            <span class="info-value">Computer Science and Engineering</span>
+          </div>
+
+          <div class="info-item">
+            <i class="fas fa-brain info-icon"></i>
+            <span class="info-label">Specialisation</span>
+            <span class="info-value gradient-text"
+              >AI Engineer & Software Engineer</span
+            >
+          </div>
+        </div>
+
+        <div class="profile-card skills-card">
+          <div class="info-item">
+            <i class="fas fa-rocket info-icon"></i>
+            <span class="info-label">Open to</span>
+            <span class="info-value"
+              >Fullstack Development & Machine Learning Roles</span
+            >
+          </div>
+        </div>
+
+        <div class="profile-card message-card">
+          <div class="info-item">
+            <i class="fas fa-heart info-icon"></i>
+            <span class="info-label">Message</span>
+            <span class="info-value"
+              >Thank you PLP for this incredible opportunity!</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <p>&copy; 2025 Achilles Deyeni. Crafted with passion and code.</p>
+      </footer>
+    </div>
+
+    <script>
+      // Create animated background particles
+      function createParticles() {
+        const bgAnimation = document.getElementById("bgAnimation");
+
+        setInterval(() => {
+          const particle = document.createElement("div");
+          particle.className = "particle";
+
+          const size = Math.random() * 5 + 2;
+          const startX = Math.random() * window.innerWidth;
+          const duration = Math.random() * 10 + 15;
+
+          particle.style.width = `${size}px`;
+          particle.style.height = `${size}px`;
+          particle.style.left = `${startX}px`;
+          particle.style.animationDuration = `${duration}s`;
+
+          bgAnimation.appendChild(particle);
+
+          // Remove particle after animation
+          setTimeout(() => {
+            if (particle.parentNode) {
+              particle.parentNode.removeChild(particle);
+            }
+          }, duration * 1000);
+        }, 300);
+      }
+
+      // Add smooth scroll behavior and entrance animations
+      document.addEventListener("DOMContentLoaded", function () {
+        createParticles();
+
+        // Stagger animation for profile cards
+        const cards = document.querySelectorAll(".profile-card");
+        cards.forEach((card, index) => {
+          card.style.animationDelay = `${index * 0.2}s`;
+          card.style.animation = "slideUp 0.8s ease-out forwards";
+          card.style.opacity = "0";
+          card.style.transform = "translateY(30px)";
+
+          setTimeout(() => {
+            card.style.opacity = "1";
+            card.style.transform = "translateY(0)";
+          }, index * 200);
+        });
+
+        // Add interactive hover sounds (visual feedback)
+        cards.forEach((card) => {
+          card.addEventListener("mouseenter", function () {
+            this.style.transform = "translateY(-10px) scale(1.02)";
+          });
+
+          card.addEventListener("mouseleave", function () {
+            this.style.transform = "translateY(0) scale(1)";
+          });
+        });
+      });
+
+      // Add parallax effect to header on scroll
+      window.addEventListener("scroll", () => {
+        const scrolled = window.pageYOffset;
+        const header = document.querySelector(".header-title");
+        header.style.transform = `translateY(${scrolled * 0.3}px)`;
+      });
+    </script>
+  </body>
+</html>
